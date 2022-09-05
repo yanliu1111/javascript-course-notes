@@ -66,5 +66,3 @@ const num = Number ('23'); //convert string to number, building function
 ```
 
 ### 34 Function Declarations Vs. Expressions
-
-wwww
