@@ -246,7 +246,13 @@ shif+F12 基于chrom的开发者工具栏
 
     show all emoji
 
+16. Ctrl + D, 如果选择一个variable, 需要改变，按两键后，会把所有此variable选择，可以一起修改。
 
+17. window+alt+up/down:  change lines up and down
+
+    option in mac = window in PC
+
+18. shift + alt + up 上面添加一行一样的。copy on the up line
 
 
 
