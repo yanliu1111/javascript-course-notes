@@ -597,11 +597,214 @@ if (mark.bmi > john.bmi) {
 }
 ```
 
+### 48 Looping Arrays, Breaking and Continuing
 
+```javascript
+const jonas = [
+    'Jonas', ,
+    'Schmed',
+    2037 - 1991,
+    'teacher',
+    ['Noah', 'Mike', 'Bob'],
+    true
+]
+const types = [];
+for (let i = 0; i < jonas.length; i++) {
+    //Reading from jonas array
+    console.log(jonas[i], typeof jonas[i]);
+    //Filling types array
+    //types[i] = typeof jonas[i]
+    types.push(typeof jonas[i]);
+}
 
+console.log(types);
 
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+for (let i = 0; i < years.length; i++) {
+    ages.push(2037 - years[i]);
+}
+console.log(ages);
+```
 
+#### Continue and Break
 
+```javascript
+console.log('---Only String---');
+for (let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] !== 'string') continue;
+    console.log(jonas[i], typeof jonas[i]);
+}
+console.log('---Break with Num---');
+for (let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] === 'number') break;
+    console.log(jonas[i], typeof jonas[i]);
+}
+```
 
+### 48 Looping Backwards and Loops in Loops
 
+```javascript
+const jonas = [
+    'Jonas',
+    'Schmed',
+    2037 - 1991,
+    'teacher',
+    ['Noah', 'Mike', 'Bob']
+];
+for (let i = jonas.length - 1; i >= 0; i--) {
+    console.log(i, jonas[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`-----Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weight repetition ${rep} 🏋️‍♀️`);
+    }
+}
+```
+
+### While Loop
+
+```javascript
+//for loop
+ for (let rep = 1; rep <= 10; rep++) {
+     console.log(`Lifting weights repetition ${rep}🏋️‍♂️`);
+ }
+//while loop
+let rep = 1;
+while (rep <= 10) {
+    //console.log(`While: Lifting weights repetition ${rep}🏋️‍♂️`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6) console.log(`Loop is about to end...`);
+}
+```
+
+### 50 Coding Challenge #4
+
+```javascript
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = []; 
+const totals = []; 
+ 
+function calcTip(bills) { 
+    if (bills > 50 && bills < 300){
+        return 0.15 * bills;
+    }else{
+        return 0.20 * bills; 
+    }
+ 
+}
+ 
+function calcTotal(bills) { 
+    if (bills > 50 && bills < 300){
+        return 0.15 * bills + bills;
+    }else{
+        return 0.20 * bills + bills; 
+    }    
+}
+ 
+function calcAverage(arr) { 
+    let sum = 0;
+    
+    for(let i = 0; i < arr.length; i++){
+        sum = sum + arr[i]
+    }
+    return sum / arr.length; 
+ 
+}
+ 
+ 
+for(let i = 0; i < bills.length; i++){
+    tips.push(calcTip(bills[i]));
+    totals.push(calcTotal(bills[i]));
+ 
+}
+console.log("tips", tips);
+console.log("totals", totals);
+console.log("total average", calcAverage(totals)); 
+console.log("tip average", calcAverage(tips));
+```
+
+Clean code! from student👆
+
+From teach👇
+
+```javascript
+const calcTip = function (bill) {
+    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2
+}
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips =[];
+const totals = [];
+
+for (let i=0; i<bills.length; i++){
+    const tip = calcTip(bills[i]);
+    tips.push(tip);
+    totals.push(tip+bills[i]);
+}
+console.log(bills, tips, totals);
+
+```
+
+About Average,
+
+```javascript
+const calcAverage = function (arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        //sum = sum + arr[i]
+        sum += arr[i];
+    }
+    //console.log(sum);
+    return sum / arr.length;
+}
+console.log(calcAverage([2, 3, 7]));
+console.log(calcAverage(totals));
+console.log(calcAverage(tips));
+```
+
+My solution 👇
+
+I checked the follows website for my code
+
+[Reduce function website](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+
+```javascript
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+let i = 0;
+const calcTip = (bill) => {
+    if (bill[i] >= 50 && bill[i] <= 300) {
+        tips.push(bill[i] * 0.15);
+    } else {
+        tips.push(bill[i] * 0.2);
+    }
+    totals.push(bill[i] + tips[i]);
+    i++;
+    if (i === bills.length) {
+        i = 0;
+        return;
+    } else {
+        calcTip(bill);
+    }
+}
+calcTip(bills);
+
+const calcAverage = bill => bill.reduce((previousValue, currentValue) => previousValue + currentValue, 0) / bill.length;
+const average = calcAverage(totals);
+console.log(average);
+
+console.log(tips, totals, average);
+```
 
