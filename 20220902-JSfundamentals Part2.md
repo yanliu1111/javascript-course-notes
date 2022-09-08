@@ -428,13 +428,174 @@ console.log(`${jonasName} has ${numFriend} friends, and his best friend is calle
 | Member Access          | left to right | ...  **.**   ...     |
 | Computed Member Access | left to right | ...  [ .... ]        |
 
+### 44 Object Methods
 
+USE **THIS**! 👇
 
+```javascript
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmed',
+    birthYear: 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
+    // calcAge: function (birthYear) {
+    //     return 2037 - birthYear;}
+    calcAge: function () {
+        console.log(this);
+        return 2037 - this.birthYear
+    }
+};
+//object property includes function value too.
 
+console.log(jonas.calcAge());
+```
 
+`console.log(jonas['calcAge'](1991));`
+Don't write 1991 multiple times, only once in the beginning, dry code! So using THIS!
+THIS is same as jonas now. 👆
 
+Most efficient solution👇
 
+```javascript
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmed',
+    birthYear: 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
 
+    calcAge: function () {
+        this.age = 2037 - this.birthYear; //creating jonas.age
+        return this.age;
+    }
+};
+//object property includes function value too.
+
+console.log(jonas.calcAge()); //copy 4 time, calculate 4 times
+
+console.log(jonas.age); //ctrl+D, change all 
+console.log(jonas.age);
+console.log(jonas.age);
+```
+
+copy 4 times, only calculate onece. Most efficient solution, we simply retrieve the property that we hadd already calculated before.
+
+#### Challenge
+
+Create getSummary function as an object, 
+
+"Jonas is a 46-year old teacher, and he has a/no driver's license"
+
+```javascript
+const jName = jonas.firstName;
+const jAge = jonas.age;
+const jjob = jonas.job;
+const jDriverLic = console.log(jonas.hasDriversLicense ? 'a' : 'no');
+console.log(`${jName} is a ${jAge}-year old ${jjob}, and he has ${jDriverLic} driver's license`);
+```
+
+From teacher 👇
+
+```javascript
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmed',
+    birthYear: 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: false,
+
+    calcAge: function () {
+        this.age = 2037 - this.birthYear; //creating jonas.age
+        return this.age; //same as add new property
+    },
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`
+    }
+
+};
+//object property includes function value too.
+
+console.log(jonas.calcAge()); //copy 4 time, calculate 4 times
+console.log(jonas.age); //ctrl+D, change all 
+console.log(jonas.getSummary());
+```
+
+For example, **friend.push()**, we have an array and on there we call a method. Arrays are actually also objects, special kind of object. They have functions and in the other words, they have methods that we can use to manipulate them like push, pop, shift and unshift and many more. 
+
+In the end, now, we create our own methods on our own objects. 
+
+Complex topics, but it is enjoy in this learning journey 🚢🌍
+
+### 45 Coding Challenge #3
+
+```javascript
+const Mark = {
+    firstName: 'Mark',
+    lastName: 'Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }
+};
+const John = {
+    firstName: 'John',
+    lastName: 'Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }
+};
+console.log(Mark.calcBMI(), John.calcBMI());
+//"John's BMI (28.3) is higher than Mark's (23.9)!"
+if (Mark.calcBMI > John.calcBMI) {
+    console.log(`${John.firstName}'s BMI (${John.calcBMI()}) is higher than ${Mark.firstName}'s BMI (${Mark.calcBMI()})`);
+} else {
+    console.log(`${Mark.firstName}'s BMI (${Mark.calcBMI()}) is higher than ${John.firstName}'s BMI (${John.calcBMI()})`);
+}
+```
+
+From teacher 👇
+
+```javascript
+const mark = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi;
+    }
+}
+
+const john = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi;
+    }
+}
+
+mark.calcBMI();
+john.calcBMI();
+
+console.log(mark.bmi, john.bmi);
+
+if (mark.bmi > john.bmi) {
+    console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})`);
+} else if (john.bmi > mark.bmi) {
+    console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`);
+}
+```
 
 
 
