@@ -110,9 +110,11 @@ y_1
 
 - [ ] JavaScript
 - [ ] React
+  - [ ] VUE
 - [ ] HTML
 - [ ] CSS
 - [ ] Python
+  - [ ] Flask
 
 ### Table
 
