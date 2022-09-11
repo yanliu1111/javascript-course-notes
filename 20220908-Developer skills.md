@@ -262,7 +262,46 @@ const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
 console.log(amplitudeBug);
 ```
 
+### Challenge
 
+My solution
+
+```javascript
+const arr = [17, 21, 23];
+const arr1 = [];
+const printForecast = function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(`...${arr[i]}C in ${i + 1} days`);
+    arr1.push(`...${arr[i]}C in ${i + 1} days`);
+    //console.log(arr1[i]);
+  }
+};
+printForecast(arr);
+```
+
+I thought push function can add every elements from array to string.
+
+The difficult to me, how to change array to string.
+
+```javascript
+const data1 = [17, 21, 23];
+const data2 = [12, 5, -5, 0, 4];
+console.log(`... ${data1[0]}ºC ... ${data1[1]}ºC ... ${data1[2]}ºC ...`);
+const printForecast = function (arr) {
+  let str = '... ';
+  for (let i = 0; i < arr.length; i++) {
+    //str=str+`${arr[i]}ºC in ${i+1} days ...`;
+    str += `${arr[i]}ºC in ${i + 1} days ... `;
+  }
+  console.log(str);
+};
+printForecast(data1);
+```
+
+👍Idea from student: You can include the first 3 dots in the variable let str = '...' and then build from there
+
+
+  
 
 
 
