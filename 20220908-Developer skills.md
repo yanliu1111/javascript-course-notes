@@ -301,20 +301,6 @@ printForecast(data1);
 👍Idea from student: You can include the first 3 dots in the variable let str = '...' and then build from there
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
