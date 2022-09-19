@@ -258,9 +258,9 @@ shif+F12 基于chrom的开发者工具栏
 
 
 
-leetcode YanLiu0504, 820504Ly!
+Plan project 1: 1) python + django
 
-
+​                                2) express+node.js
 
 
 
