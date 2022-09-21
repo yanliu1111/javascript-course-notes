@@ -50,3 +50,81 @@ function editInPlace() {
 editInPlace();
 ```
 
+### try catch finally
+
+- `try...catch`
+- `try...finally`
+- `try...catch...finally`
+
+You can create "Conditional `catch`-blocks" by combining `try...catch` blocks with `if...else if...else` structures, like this:
+
+```javascript
+try {
+  myroutine(); // may throw three types of exceptions
+} catch (e) {
+  if (e instanceof TypeError) {
+    // statements to handle TypeError exceptions
+  } else if (e instanceof RangeError) {
+    // statements to handle RangeError exceptions
+  } else if (e instanceof EvalError) {
+    // statements to handle EvalError exceptions
+  } else {
+    // statements to handle any unspecified exceptions
+    logMyErrors(e); // pass exception object to error handler
+  }
+}
+```
+
+A common use case for this is to only catch (and silence) a small subset of expected errors, and then re-throw the error in other cases:
+
+```javascript
+try {
+  myRoutine();
+} catch (e) {
+  if (e instanceof RangeError) {
+    // statements to handle this very common expected error
+  } else {
+    throw e;  // re-throw the error unchanged
+  }
+}
+```
+
+###  JavaScript Demo: Array.reduce()
+
+```javascript
+const array1 = [1, 2, 3, 4];
+
+// 0 + 1 + 2 + 3 + 4
+const initialValue = 0;
+const sumWithInitial = array1.reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+
+console.log(sumWithInitial);
+// expected output: 10
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
