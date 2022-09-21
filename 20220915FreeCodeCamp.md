@@ -89,7 +89,7 @@ try {
 }
 ```
 
-###  JavaScript Demo: Array.reduce()
+###  Array.reduce()
 
 ```javascript
 const array1 = [1, 2, 3, 4];
@@ -106,7 +106,31 @@ console.log(sumWithInitial);
 
 ```
 
+###  (...args)
 
+```javascript
+const sum = (...args) => {
+  return args.reduce((a, b) => a + b, 0);
+  // const args = [x, y, z];
+  // return args.reduce((a, b) => a + b, 0);
+}
+// agrs.length
+```
+
+###  Assign Variables from Nested Objects
+
+```javascript
+const LOCAL_FORECAST = {
+  yesterday: { low: 61, high: 75 },
+  today: { low: 64, high: 77 },
+  tomorrow: { low: 68, high: 80 }
+};
+
+  
+// const lowToday = LOCAL_FORECAST.today.low;
+// const highToday = LOCAL_FORECAST.today.high;
+const{today:{low:lowToday, high:highToday}}=LOCAL_FORECAST;
+```
 
 
 
