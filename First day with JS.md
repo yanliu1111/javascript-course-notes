@@ -250,7 +250,7 @@ shif+F12 基于chrom的开发者工具栏
 
 16. Ctrl + D, 如果选择一个variable, 需要改变，按两键后，会把所有此variable选择，可以一起修改。
 
-17. window+alt+up/down:  change lines up and down
+17. windows:    alt+up/down:  change lines up and down
 
     option in mac = window in PC
 
