@@ -138,15 +138,66 @@ btnRoll.addEventListener('click', function () {
 
 #### 85 Hold Current Score
 
+Challenge: add New Game bottom
 
+My answer 😥
 
+```javascript
+btnNew.addEventListener('click', function () {
+  scores[0] = 0;
+  scores[1] = 0;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
 
+  activePlayer === 0;
+  diceEl.classList.add('hidden');
+});
+```
 
+**Teacher answers:**
 
+```javascript
+let scores, currentScore, activePlayer, playing;
+const init = function () {
+  //starting conditions
 
+  scores = [0, 0]; //store score, player0 and player1
+  currentScore = 0; //has to be outside
+  activePlayer = 0;
+  playing = true;
 
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
 
+  diceEl.classList.add('hidden');
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+};
+init();
 
+....
+btnNew.addEventListener('click', init);
+
+```
+
+##### Scoping
+
+the variables defined  inside of function, only available inside of function.
+
+![1663896695425](../Typora Note/pic/1663896695425.png)
+
+So now, ==scores/currentScore/activePlayer/playing== only declare in the function. So they are not accessible outside of function. They are ==SCOPED== to init function. 
+
+init(); => declare the function, not value. 
+
+![1663896885719](../Typora Note/pic/1663896885719.png)
+
+Now it is working.  Declaring a variable is not the same as assigning them a value. Now in the function, we assign them a value, but they still live outside of function. Now they are accessible in every function everywhere. 
 
 
 
