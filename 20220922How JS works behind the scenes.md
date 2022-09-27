@@ -68,12 +68,12 @@ The browser provides API
 
 Just remember, that different JS runtimes do exist.
 
-### 91 Execution contexts and the call stack
+### 91. Execution contexts and the call stack
 
-#### hat’s inside excution context?4
+#### What’s inside execution context?
 
 1. Variable Environment
-   - let const and var definitions
+   - let, const and var definitions
    - functions
    - arguments object 参数对象
 2. Scope chain
@@ -106,7 +106,84 @@ var funcExpression = function () {
 
 通常函数声明和函数表达式是可以相互互换使用，但有时函数表达式结果理解代码不需要一个临时的函数名。
 
-### 92 Scope and The scope Chain
+### 92. Scope and The scope Chain
+
+Scoping and variable environment same, but actually different
+
+![1664145661030](../Typora Note/pic/1664145661030.png)
+
+![1664146820182](../Typora Note/pic/1664146820182.png)
+
+
+
+==**Important**==
+
+![1664147809022](../Typora Note/pic/1664147809022.png)
+
+The scope chain does get the variable environments from the execution context as shown by the red arrows here, BUT that’s it! The order of function calls is not relevant to the scope chain at all.
+
+![1664148479698](../Typora Note/pic/1664148479698.png)
+
+b and C are not in right side. Error!
+
+![1664148998370](../Typora Note/pic/1664148998370.png)
+
+### 93. Scoping in Practice
+
+```javascript
+'use strict';
+
+function calcAge(birthYear) {
+  const age = 2037 - birthYear;
+  function printAge() {
+    const output = `${firstName}, you are ${age}, born in ${birthYear}`;
+    console.log(output);
+
+    if (birthYear >= 1981 && birthYear <= 1996) {
+      var millenial = true;
+      const firstName = 'Steven'; // first fetch in scope, doesnt care global variable
+      const str = `Oh, and you're a millendial, ${firstName}`;
+      console.log(str);
+
+      function add(a, b) {
+        return a + b;
+      }
+    }
+    // console.log(str);Error: because const and let are block variables, they are valiable only inside the block
+    console.log(millenial); // But if we create var inside, var is not block scope, it is function scope, Now var still in the BIG function scope.
+    // console.log(add(2, 3)); Error: in strict model, function is affected by leaving inside block scope. If move 'use strict', this works!
+  }
+  printAge();
+
+  return age;
+}
+
+const firstName = 'Jonas';
+calcAge(1991);
+// console.log(age); Reference Error
+// printAge(); Reference Error
+```
+
+Now, what happens when we redefine a variable from a parent scope inside of an inner scope. Not creating a new variable, but simply reassigning the value of a variable. 
+
+```javascript
+if (birthYear >= 1981 && birthYear <= 1996) {
+      var millenial = true;
+      //creating new variable with same name as outer scope's variable
+      const firstName = 'Steven'; // first fetch in scope, doesnt care global variable
+      // reassigning outer scope's variable
+      output = 'New output!'; // in this method, we manipulate an existing variable inside of child scope. So inside of an inner scope. We didnt create a new variable, we simply redefined a variable we access in parent scope.
+      //   const output = 'New output!'; BUT if I create a new variable (const+same name), this is complete new variable which would NOT affect the output from out scope.
+      const str = `Oh, and you're a millendial, ${firstName}`;
+      console.log(str);
+
+      function add(a, b) {
+        return a + b;
+      }
+    }
+```
+
+### 94. Variable Environment: Hoisting and the TDZ
 
 
 
