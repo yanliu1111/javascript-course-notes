@@ -74,7 +74,9 @@ Tony never `git restore`
 
 `git fetch` fetch the changes from server
 
+`git push` end
 
+then check `git status`
 
 
 
@@ -200,7 +202,7 @@ github will made the initial commit for me,
 
 
 
-###  20220926 Greg Course
+###  20220926 Node.js - Greg R
 
 Node.js --- JS on the server side
 
@@ -273,6 +275,42 @@ const favouriteFruit =[‘fafagag’] // error!
 
 
 ==redirection to other folder, and rename “cooking journal”, git doesnt care==
+
+
+
+### 20220928 Function - Greg F
+
+some ==APIs== ask us to pass functions as parameters (a “**callback** fucntion”)
+
+```javascript
+9function sayHello(Name){
+consol.log("Hello", name)
+}
+setTimeout(sayHello, 5000);
+
+```
+
+List processing and asynchronous operations use function passing “pass in a **callback**”(==delay==)
+
+5000 - how many millisecond start excute the function, 5000 millisecond wait to call the function.
+
+```javascript
+setTimeout((name)=>console.log("Hello", name), 5000);
+
+setTimeout(()=>console.log("Hello"), 5000);
+```
+
+👆  (  ) passong in an anonymous 空空號意思passing 一個匿名的variable
+
+​     => passing in a lambda / passing in a function
+
+​	passing in a callback
+
+
+
+
+
+
 
 
 

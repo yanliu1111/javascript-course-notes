@@ -185,15 +185,81 @@ if (birthYear >= 1981 && birthYear <= 1996) {
 
 ### 94. Variable Environment: Hoisting and the TDZ
 
+![1664469092815](../Typora Note/pic/1664469092815.png)
 
+To recap, basically each and every let and const variable get their own temporal dead zone that starts at the begining of the scope until the line where it is defined. And the variable is only safe to use after the TDZ. 
 
+![1664467610445](../Typora Note/pic/1664467610445.png)
 
+TDZ temporal dead zone for job variable
 
+#### **Why TDZ?** 
 
+TDZ was introduced in ES6 is that  the behavior I described before makes it way easier to avoid and catch errors. 
 
+So accessing variables before declaration is bad parctice and should be avoided. Send you an error, that is exactly what a ==Temporal Dead Zone== does. 
 
+A second and smaller reason why the TDZ exists  is t omake const variables actually work the way they are supposed to . 
 
+As we know, we cannot ==reassign== const variables. So it will not be possible to set them to undefined first  and then assign their real value later. 
 
+#### **Why Hoisting** 
+
+Using functions before actual declaration. It is essential for some programming techniques, such as mutual recursion.  Make the code a lot more readable. 
+
+The fact that is also works for var declarations is because that was the only way hoisting could be implemented at the time. 
+
+So the hoisting of var variables is bacically just a buproduct of hoisting functions. simply set variables to undefined,  which in hindsight is nor really that great. 
+
+### 95 Hoisting and TDZ Practice
+
+Yesterday, we learned Function with Greg,  I got update knowledge about function today.
+
+Only function declaration has hoisting function, no working for function expression and arrow
+
+Correct
+
+```javascript
+console.log (addDecl(2,3));
+const addDecl (a,b){
+return a+b;
+}
+```
+
+Error
+
+```javascript
+console.log(addExpr(2,3));
+const addExpr = function (a, b){
+return a+b;
+}
+```
+
+My question is how to choose when I need to use function declaration and function express?
+
+#### Very cool! pitfall of hoisting
+
+var numbproducts =10; \\ \undefined
+
+so,  if (!numberproducts) deleteShoppingCart(); \\ \all products deleted! because is not number is undefined result.
+
+function deleteShoppingCart{
+
+console.log(‘all products deleted!’);
+
+}
+
+```javascript
+var x=1;
+let y=2;
+const z=3;
+
+console.log(x===window.x);\\true
+console.log(y===window.y);\\false
+console.log(z===window.z);\\false
+```
+
+So in conclusion, variable declared with var, will create a property on the global window object. And that can have some implications in some cases. 
 
 
 
