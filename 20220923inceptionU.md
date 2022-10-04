@@ -306,7 +306,56 @@ setTimeout(()=>console.log("Hello"), 5000);
 
 ​	passing in a callback
 
+### 20221003 Rock paper scissors_Greg
 
+MVP: 
+
+npm: node package manager
+
+```json
+{
+  "name": "2022-10-3-rockpaperscissor",
+  "version": "0.1.0",
+  "description": "Rock, paper, scissors termial game",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dosomethingcool": "echo Hi",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yan Liu",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
+```
+
+"readline-sync": "^1.4.10"
+
+"readline-sync": "*"         I need the lastest the version
+
+^ : allow change next time, when you do install npm
+
+1.4.9 => you locked the version update, 
+
+Greg recommended to use ^, do `install npm`, automatically update to the lastest.
+
+1.4.10  -- 4 and 10 is changable number
+
+1.5.10 - small change, code works also!
+
+2.0.0 - 2 is lock number, now the code is useless
+
+Example, ` "readline-sync": "1.4.9"` -> `install npm` now package and package-lock all change to 1.4.9
+
+`"readline-sync": "^1.4.10"`-> `npm install readline-sync`-> everything changed to the lastest version.
+
+1 -> major version
+
+4-> minor version
+
+10-> patch version --> everytime update the patch when you do `install npm`
 
 
 

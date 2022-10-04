@@ -241,7 +241,7 @@ My question is how to choose when I need to use function declaration and functio
 
 var numbproducts =10; \\ \undefined
 
-so,  if (!numberproducts) deleteShoppingCart(); \\ \all products deleted! because is not number is undefined result.
+so,  if (!numberproducts) deleteShoppingCart(); ==\\ \all products deleted! because is not number is undefined result.==
 
 function deleteShoppingCart{
 
@@ -263,13 +263,241 @@ So in conclusion, variable declared with var, will create a property on the glob
 
 
 
+###  96 The this keyword
+
+![1664667000462](../Typora Note/pic/1664667000462.png)
+
+Arrow function don’t get this keyword
+
+```javascript
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+  greeting: () => console.log(`Hey ${this.firstName}`),
+};
+jonas.greeting(); 
+console.log(this.firstName); //because this is window object, there is no first name and so we get undefined.
+```
+
+- Hey undefined, arrow function does not get its own this keyword, it will simply use the this keyword from its surroundings. in other words, its parents this keyword.The parent scope of ==this== greet method is the global scope.
+
+- `console.log(this)`is window scope, global scope is window scope.
+
+  `greeting:()=> console.log('Hely ${this.firstName}')`, parent scope is global scope is windows, windows hasnt this variable. 
+
+  - So， 作者危險操作，create var this，he build this variable in global scope, in windows.
+
+- We cannot accesse some property on a certain object, we dont get error, we get undefined. 
+
+- this is not code block, it is object literal, this is the way we literally define objects. all of this in the global scope. Greeting is in global scope, arrow function doesnt have its own this keyword. Will use the this keyword from the global scope.
+
+- console.log(this);  this is window object
+
+```javascript
+var firstName ='Matilda';
+```
+
+var is dangous, var defined in window, which translate to window dot first name. 
+
+==You should never ever use an arrow function as a method, that’s even true if you’re not even using the this keyword in a particular method.==
+
+You will always just use a normal function expresion, and like this, you will then prevent this kind of mistakes from happen. 
+
+Keep consist in normal function! I can use this keyword
+
+```javascript
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+  greeting: function () {
+    console.log(`Hey ${this.firstName}`);
+  },
+};
+jonas.greeting();
+```
+
+Inside function call, that this keyword must be indefined. 
+
+```javascript
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2037 - this.year);
+    const isMillenial = function () {
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+  greeting: function () {
+    console.log(`Hey ${this.firstName}`);
+  },
+};
+jonas.greeting();
+jonas.calcAge();
+```
+
+isMillenial(); // inside function, undefined
+
+jonas.calcAge(); // undefined
+
+Solution1:
+
+```javascript
+const self = this; //self or that
+    const isMillenial = function () {
+      console.log(self);
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    isMillenial();
+  },
+```
+
+Solution2, used arrow function instead, basically an arrow function inferites the this keyword from parent scope. 
+
+```javascript
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2037 - this.year);
+    //solution 1
+    //   const self = this; //self or that
+    //   const isMillenial = function () {
+    //     console.log(self);
+    //     console.log(self.year >= 1981 && self.year <= 1996);
+    //   };
+    //   isMillenial();
+    // },
+    //Solution2 Arrow function used this keyword from its parent scope.
+    const isMillenial = () =>
+      function () {
+        console.log(this);
+        console.log(this.year >= 1981 && this.year <= 1996);
+      };
+    isMillenial();
+  },
+  greeting: function () {
+    console.log(`Hey ${this.firstName}`);
+  }, // cannot use arrow, no parent(windows is global), object it is not parent.
+};
+jonas.greeting();
+jonas.calcAge();
+```
+
+#### arguments keyword is only avaiable in regular functions
+
+```javascript
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr(2, 5);
+addExpr(2, 5, 8, 12); //works
+
+//no works in arrow function
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 8);
+```
+
+### 99 Primitives vs Objects (primitive vs reference types)
+
+The engine had two components, the call stack, where the function are excute/ and to heap where objects are stored in memory.
+
+Reference type will get stored right in the memory heap. 
+
+On the other hand, primitives or primitive types are stored in the call stack. Primitives are stored in the execution contexts in which they are declared. 
+
+![1664906059851](../Typora Note/pic/1664906059851.png)
+
+When we declare a variable as an object, an identifier is created, which points to a piece of memory in the stack, which in turn points to a piece of memory in the heap. That is where the object is actually stored.
+
+Heap is like an almost unlimited memory pool.
+
+Stack keeps a reference to where the object is actually stored in the heap so that it can find it whenever necessary. 
+
+![1664907737841](../Typora Note/pic/1664907737841.png)
 
 
 
+### 100🎉 Primitives vs Objects in Practice
 
+We cannot change value in stack
 
+We cannot change the value to a new memory address,  so `const marriedJessica =jessica`; `marriedJessica ={};` cannot work
 
+Completely change a object, is different just change a proterty of object. `marriedJessica.lastName=‘Davis';`
 
+```javascript
+//Reference types
+const jessica = {
+  firstName:'Jessica';
+  lastName:'Williams';
+  age:27
+}
+const marriedJessica = jessica;
+marriedJessica.lastName='Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage:', marriedJessica);
+```
+
+Copying objects
+
+```javascript
+const jessica2 = {
+  firstName:'Jessica';
+  lastName:'Williams';
+  age:27
+}
+
+const jessicaCopy=Object.assign({},jessica2);
+jessicaCopy.lastName='Davis'
+console.log('Before marriage:', jessica);
+console.log('After marriage:', marriedJessica);
+```
+
+JessicaCopy is indeed a real copy of the orignial. All the properties were essentially copied from one object to the other. New object was in fact created in the heap. And JessicaCopy is pointing to that object. It has a reference to that new object. 
+
+==Problem== object.assign only works in the first level. If we have an object inside the object, then this inner object will actually still be the same. It will still point to the same place in memory. 
+
+==Object.assign only create a shallow copy==, not a deep clone which is what we would like to have. 
+
+```javascript
+const jessica2 = {
+  firstName:'Jessica',
+  lastName:'Williams',
+  age:27,
+  family:['Alice','Bob'],
+}
+
+const jessicaCopy=Object.assign({},jessica2);
+jessicaCopy.lastName='Davis'
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+console.log('Before marriage:', jessica);
+console.log('After marriage:', marriedJessica);
+```
+
+**Williams doesnt changed, because first level**
+
+**Family object is a deeply nested object, therefore, object.assign did not really, behind the scenes, copy it to the new object. So in essence, both the objects, Jessica2 and JessicaCopy have a proterty called family, which points at the same object in the memory heap. Here is array, array inside object, deep object.**
+
+Complex: How to create a deep clone, using an external lib, for example, like lo-Dash, one of them is for deep cloning. Future section, we use external lib to do deep clone.
 
 
 
