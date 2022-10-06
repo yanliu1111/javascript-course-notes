@@ -4,6 +4,18 @@
 
 1. Build 6x6 grids -- room map, using stars   \***  
 
+   🔒✅✅✅✅🔒
+
+   ✅✅✅✅✅✅
+
+   ✅✅✅✅🔑✅
+
+   ✅✅✅✅✅✅
+
+   ✅✅✅✅✅✅
+
+   😉✅✅✅✅🔓
+
 2. The doors located at three corners , and the forth corner for Start
 
 3. Key randomly locates in the room map

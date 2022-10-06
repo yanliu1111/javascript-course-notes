@@ -466,8 +466,8 @@ const jessica2 = {
 
 const jessicaCopy=Object.assign({},jessica2);
 jessicaCopy.lastName='Davis'
-console.log('Before marriage:', jessica);
-console.log('After marriage:', marriedJessica);
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy);
 ```
 
 JessicaCopy is indeed a real copy of the orignial. All the properties were essentially copied from one object to the other. New object was in fact created in the heap. And JessicaCopy is pointing to that object. It has a reference to that new object. 
@@ -489,27 +489,13 @@ jessicaCopy.lastName='Davis'
 
 jessicaCopy.family.push('Mary');
 jessicaCopy.family.push('John');
-console.log('Before marriage:', jessica);
-console.log('After marriage:', marriedJessica);
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy);
 ```
 
-**Williams doesnt changed, because first level**
+**Williams doesn’t changed, because first level**
 
-**Family object is a deeply nested object, therefore, object.assign did not really, behind the scenes, copy it to the new object. So in essence, both the objects, Jessica2 and JessicaCopy have a proterty called family, which points at the same object in the memory heap. Here is array, array inside object, deep object.**
+**Family object is a deeply nested object, therefore, object.assign did not really, behind the scenes, copy it to the new object. So in essence, both the objects, Jessica2 and JessicaCopy have a proterty called family, which ==points at the same object in the memory heap==. Here is array, array inside object, deep object.**
 
 Complex: How to create a deep clone, using an external lib, for example, like lo-Dash, one of them is for deep cloning. Future section, we use external lib to do deep clone.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

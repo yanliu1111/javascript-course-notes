@@ -357,11 +357,40 @@ Example, ` "readline-sync": "1.4.9"` -> `install npm` now package and package-lo
 
 10-> patch version --> everytime update the patch when you do `install npm`
 
+### 2022-10-05 REPL with Greg F
 
+Shift + Insert is paste on windows git bash terminal
+ctrl+V doesn't work
 
+[c9-repl-cart](https://github.com/EvolveU-FSD/c9-repl-cart)
 
+==Question in zoom==
 
+**<u>From Maggie Chew to Everyone 09:43 AM</u>
+when I use npm install (module) and it automatically updates package.json, is that because the command "npm install" uses computer language to update that file? or something like that?**
 
+<u>From Danielle Barker to Everyone 09:53 AM</u>
+you need another command line tool to be able to do what you are asking about, Gabriel.  GitHub CLI
+tbh it's just a lot easier to just create it on github.com and then clone
+you avoid all these issues
+
+**how to delete the phrase 'keep your hair straight & tidy' quickly?**
+
+<u>From Danielle Barker to Everyone 10:48 AM</u>
+move to end of line, option shift left arrow moves the cursor one word to the left and selects it...repeat to select whole line
+not sure it works on windows, but it'd be alt+shift+left arrow
+
+**<u>From Danielle Barker to Everyone 11:07 AM</u>
+you are declaring p...as an argument to the callback function of the forEach
+(P) =>
+is defining a variable called p that is available in that functions code block
+and is passed a value by the forEach**
+
+<u>From Danielle Barker to Everyone 11:07 AM</u>
+you are declaring p...as an argument to the callback function of the forEach
+(P) =>
+is defining a variable called p that is available in that functions code block
+and is passed a value by the forEach
 
 
 
