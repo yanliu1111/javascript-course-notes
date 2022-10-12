@@ -1,4 +1,4 @@
-### 20220923 Tony course
+### 2022-09-23 Tony course
 
 Interesting webs: Clone third party projects: Popular projects
 
@@ -202,7 +202,7 @@ github will made the initial commit for me,
 
 
 
-###  20220926 Node.js - Greg R
+###  2022-09-26 Node.js - Greg R
 
 Node.js --- JS on the server side
 
@@ -278,12 +278,12 @@ const favouriteFruit =[‘fafagag’] // error!
 
 
 
-### 20220928 Function - Greg F
+### 2022-09-28 Function - Greg F
 
 some ==APIs== ask us to pass functions as parameters (a “**callback** fucntion”)
 
 ```javascript
-9function sayHello(Name){
+function sayHello(Name){
 consol.log("Hello", name)
 }
 setTimeout(sayHello, 5000);
@@ -306,7 +306,7 @@ setTimeout(()=>console.log("Hello"), 5000);
 
 ​	passing in a callback
 
-### 20221003 Rock paper scissors_Greg
+### 2022-10-03 Rock paper scissors_Greg
 
 MVP: 
 
@@ -393,6 +393,88 @@ is defining a variable called p that is available in that functions code block
 and is passed a value by the forEach
 
 
+
+**Kshitija** teaches:
+
+1. Clone from EvovlU github RELP folder, in your vs code, specific folder, .git already in it
+2.  Danielle involve github account in the InceptionU github organization 
+
+3. Build your branch yanliu, avoid using main (branch)
+
+`git push origin yanliu `  origin is EvovleU github RELP folder, yanliu is branch. 
+
+in InceptionU github, in branch, you will see, there was a yanliu branch did push editing in the origin (RELP folder)
+
+### 2022-10-07  The Art of Finding Help w/ Tony Grimes
+
+**Tony Grimes**[9:10am](https://3.basecamp.com/3951314/buckets/28568639/chats/5155144917@5409776698)
+
+Slides for today:
+
+Building Better Search Phrases:
+https://acidtone.github.io/slides/better-search-phrases.html
+
+Handling Errors:
+https://acidtone.github.io/slides/handling-errors.html
+
+Mozilla.org
+
+https://developer.mozilla.org/en-US/
+
+==better than 3wshool==
+
+Debugging web
+
+https://rubberduckdebugging.com/
+
+#### 什么是BootStrap？它的作用？
+
+BootStrap是基于HTML、CSS、JavaScript的前端框架。该框架已经预定义了一套CSS样式和样式对应的JS代码。开发人员只需要编写HTML结构，添加bootstrap固定的样式就可以轻松完成指定效果的实现。
+
+作用：
+
+①使Web开发更加快捷和高效；
+
+②bootstrap支持响应式开发，解决了移动互联网的前端开发问题。
+
+**BootStrap vs react**
+
+**BootStrap vs tailwind**
+
+#### Check error:
+
+1 Check variables  (type error, number error ... )
+
+2 Break the problem into smaller chunks;
+
+3  
+
+```javascript
+console.log('===')
+console.log('start loop')
+console.log('===')
+
+var fizzBuzz = function(n) {
+    for (let i=1, i<=100, i++){
+        //if i is divide by both 3 and 5, log 'fizz buzz'
+if (i%15===0){
+    console.log("FizzBuzz")
+}
+        // divid by 3, log 'fizz'
+        else if (i%3===0){
+            console.log('Fizz')
+        }
+        //divid by 5, log ' buzz'
+        else if (i%5===0){
+            console.log('Buzz')
+        } else{
+        //otherwise, print the num
+        console.log(i)
+        }        
+        
+    }
+};
+```
 
 
 
