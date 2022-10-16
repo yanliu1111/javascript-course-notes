@@ -26,11 +26,35 @@
 
 6. Keep every player records in SQL server, show top 5 players  and play time in the game end.
 
-   
+   #### website
 
    
 
+7. https://www.npmjs.com/package/readline-sync
 
+8. https://stackoverflow.com/questions/13167934/how-to-async-files-readalllines-and-await-for-results
+
+9. https://www.npmjs.com/package/chalk
+
+10. https://www.npmjs.com/package/chalk-animation
+
+11. https://www.npmjs.com/package/cfonts
+
+12. https://www.asciiart.eu/
+
+13. WASD
+
+14. https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
+
+15. https://www.npmjs.com/package/readline-sync
+
+16. https://www.npmjs.com/package/sound-play
+
+Drive to save images:
+
+https://support.airtable.com/docs/airtable-actions
+
+![Image](../Typora Note/pic/unknown.png)
 
 
 

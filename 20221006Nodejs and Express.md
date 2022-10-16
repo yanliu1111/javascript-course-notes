@@ -362,7 +362,12 @@ It important we use the correct status codes because we are in charge here nothi
 
 the correct status code reflects what is happening with the request and 
 
-####  Main Idea for HTTP
+####  2 Main Idea for HTTP
+
+- GET ---- Read Data
+- POST ---- Insert Data
+- PUT ---- Update Data
+- Delete ----Delete Data
 
 You sending back something and you need to describe to the browser well what are you sending back. Are you sending back the image, are you sending back CSS 
 
@@ -378,7 +383,7 @@ so local address is wrong, set new variables to point the new local address
 
 in this course, we compare two types of http http-basic and http-app
 
-#### Express.js
+#### 3 Express.js
 
 2種方法可以install express.js
 
@@ -417,7 +422,7 @@ Using Json data to front end.
 
 no matter we use server side or use Json. Just understand principles, doest matter which option we use. 
 
-#### Express Webpage
+#### 4 Express Webpage
 
 https://expressjs.com/en/api.html#res.json
 
@@ -432,7 +437,7 @@ app.get("/api/products/:productID/reviews/:reviewID", (req, res) => {
 
 view 改成views ，得到404， 因爲view is not a route parameter, it is not placeholder 
 
-####  Query string parameters
+####  5 Query string parameters
 
 https://hn.algolia.com/api
 
@@ -450,15 +455,114 @@ app.get("/api/products", (req, res) => {
 });
 ```
 
+if else statement, need return in the end.
+
+```javascript
+app.get("/api/products/:productID", (req, res) => {
+  //   console.log(req);
+  //   console.log(req.params);
+  const { productID } = req.params;
+  const singleProduct = products.find(
+    (product) => product.id === Number(productID)
+  );
+  if (!singleProduct) {
+    return res.status(404).send("Product Does Not Exist");
+  }
+  return res.json(singleProduct);
+});
+```
+
+#### 6 next middleware
+
+1. all the middleware functions all the app.uses at the top of the document. so you have middleware functions first , you will have your route method whether that get post 
+
+2. ==不要==在app.use 裏加路徑
+
+   比如`app.use("/api", logger);`
+
+   傳出不對的信息，home page不傳logger，但是在網址上加上
+
+   api/home就傳送 但是我們沒有這個網頁
+
+`http://localhost:5000/api/home/`
+
+`[nodemon] starting node app.js`
+`server is listening on port 5000
+GET /products/2 2022
+GET /products/ 2022
+GET /home/ 2022`
+
+app.use([logger, authorize]);
+
+sequence is important, you GET then authorize, or
+
+app.use([authorize, logger]);
+
+you authorize then you GET
+
+==This is simple example, definitely not authorize user in Express app==
+
+if the user provides a query string in my url , I will send back the resource that the user is requesting. However, if the user doesnt provide the user query (query string parameter in the url) I will send back 401 which stands for unauthorized. 
+
+`http://localhost:5000/api/items/?user=john`
+
+any of the route, will access that user
+
+`app.use(express.static(''))`means building a middleware
 
 
 
+Question, in the html page, I input John in option, there shows 404. Because:
 
+When we are sending a ==get== request, we’re not sending a body but when we’re sending a ==post== request, it’s very crucial . So if I want to add sth. on to the server , I want to get the data. 
 
+How I am going to know where to add to the server. 
 
+#### 7 Postman
 
+for delete and update (also get and post)
 
+fast, no need to build a front-end page
 
+`postman.com`
+
+#### 8 mvc
+
+#### 9 Controllers
+
+```javascript
+//get
+router.get("/", getPerson);
+//post
+router.post("/", createPerson);
+//POSTMAN
+router.post("/postman", createPersonPostman);
+//UPDATE
+router.put("/:id", updatePerson);
+//using postman for testing
+//Delete
+router.delete("/:id", deletePerson);
+```
+
+chain the methods and add the callback founctions
+
+I set up each route separately, for example if you have mutiple urls that match, you re able to set up router rout pass the url and then chain all the methods
+
+```javascript
+router.route('/').get(getPeople).post(createPerson)
+router.route('/postman').post(createPersonPostman)
+router.route('/:id').put(updatePerson).delete(deletePerson)
+```
+
+```
+echo "# expressjs-tutorial" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/yanliu1111/expressjs-tutorial.git
+git push -u origin main
+```
 
 
 
