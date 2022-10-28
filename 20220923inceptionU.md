@@ -476,5 +476,97 @@ if (i%15===0){
 };
 ```
 
+### 2022-10-17 Express part2 Greg R
+
+#### 1. HTTP and port
+
+Only hold one server per port
+
+hostname:localname
+
+port: 4000
+
+scheme+hostname+port+**path+query**
+
+http:// localhost:4000/**sandwiches?bread=rye**
+
+HTTP methods
+
+![1666020181930](../Typora Note/pic/1666020181930.png)
+
+password is query string, ==post== , default query string
+
+#### 2. what is express? postman process
+
+express is just web server http.
+
+express only for nodejs
+
+==postman is for testing endpoint==
+
+1. create collections, every collection names such as projectOne ... intro to Express
+
+`import express from "express";`
+
+module is for new approach
+
+require is old approach
+
+- CommonJS modules load using `require()`, and variables and functions export from a CommonJS module with `module.exports`.
+
+- Another way to enable ES modules in your project can be done by adding a `"type: module"` field inside the nearest `package.json` file (the same folder as the package you’re making):
+
+`npx kill-port 4000` ==kill port==
+
+myapp
+
+--node_modules/
+
+--src /
+
+​     ---server.js
+
+#### 3. CRUD
+
+Create= post   
+
+Read = get 
+
+Update = put/patch  
+
+Delete=delete
+
+![1666113753700](../Typora Note/pic/1666113753700.png)
+
+### 2022-10-21 AI Fri. Talk
+
+==Imagine==: yourself in powerful presentation
+
+==I want you to==
+
+==You really should== Directive
+
+Relax and absorb in presentation: You should use
+
+==What if== powerful public speaker; 
+
+==Is as if,== you are already the person you want to be
+
+==Pretend==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

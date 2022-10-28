@@ -56,5 +56,21 @@ https://support.airtable.com/docs/airtable-actions
 
 ![Image](../Typora Note/pic/unknown.png)
 
+### 20221018
 
+https://unicode-table.com/en/emoji/
+
+https://github.com/cronvel/terminal-kit
+
+https://www.npmjs.com/package/terminal-kit
+
+https://npmdoc.github.io/node-npmdoc-terminal-kit/build/apidoc.html#apidoc.element.terminal-kit.RowMenu
+
+in gitbash
+
+/d/2022study/node-express-course-main/_node-express-learning/3-projectOne
+
+### 20221021
+
+https://hn.algolia.com/api
 
