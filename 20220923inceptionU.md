@@ -556,15 +556,29 @@ Relax and absorb in presentation: You should use
 
 
 
+### 20221110
+
+`git commit -m “comments”`
+
+`git add .`
+
+`git push`
+
+first, always` git pull ` `git push`
+
+```
+
+```
 
 
 
+https://github.com/acidtone/sessions-c9
 
+https://acidtone.github.io/sessions-c9/slides/misc/git-collaboration.html
 
+branch is git
 
-
-
-
+fork is github
 
 
 
